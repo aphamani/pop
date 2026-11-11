@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tickets BE</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">✎</span>
+      <div>
+        <h1>Bureau d'études</h1>
+        <p class="subtitle">Création des tickets clichés</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Stock</a>
+      <a href="be.html" aria-current="page">BE</a>
+    </nav>
+  </header>
+
+  <div class="connexion" id="connexion"></div>
+
+  <main class="layout layout-be">
+    <section class="panel form-panel">
+      <h2>Nouveau ticket</h2>
+      <form id="form-ticket" class="form" novalidate>
+        <label class="field">
+          <span>Plan du cliché (PDF)</span>
+          <input type="file" id="plan" accept="application/pdf,.pdf" required>
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span>Machine</span>
+            <select id="machine" required></select>
+          </label>
+          <label class="field">
+            <span>Nombre de clichés (couleurs)</span>
+            <input type="number" id="nb" min="1" max="8" value="1" required>
+          </label>
+        </div>
+
+        <div class="proposition" id="proposition"></div>
+
+        <button type="submit" class="btn btn-primary btn-lg" id="btn-envoyer">
+          Envoyer le ticket et imprimer le plan
+        </button>
+      </form>
+    </section>
+
+    <section class="panel preview-panel">
+      <div class="preview-head">
+        <h2 id="preview-titre">Aperçu du plan</h2>
+      </div>
+      <div class="preview" id="preview">
+        <p class="muted">Importe un plan PDF pour l'aperçu.</p>
+      </div>
+    </section>
+  </main>
+
+  <section class="panel tickets-panel">
+    <div class="tickets-head">
+      <h2>Tickets envoyés</h2>
+      <label class="check">
+        <input type="checkbox" id="voir-annules"> Afficher les annulés
+      </label>
+    </div>
+    <div class="table-scroll">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Créé le</th>
+            <th>Ticket</th>
+            <th>Machine</th>
+            <th>Clichés</th>
+            <th>Emplacements</th>
+            <th>Statut</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="liste-tickets"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script type="module" src="js/be.js"></script>
+</body>
+</html>

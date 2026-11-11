@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock clichés</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">▦</span>
+      <div>
+        <h1>Stock clichés</h1>
+        <p class="subtitle">Emplacements et réception</p>
+      </div>
+    </div>
+
+    <form class="search" id="search-form" autocomplete="off">
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Rechercher un emplacement (ex : 23C7)"
+        aria-label="Rechercher un emplacement"
+      >
+      <button type="submit">Aller</button>
+    </form>
+
+    <nav class="nav">
+      <a href="index.html" aria-current="page">Stock</a>
+      <a href="be.html">BE</a>
+    </nav>
+  </header>
+
+  <div class="connexion" id="connexion"></div>
+
+  <section class="stats" id="global-stats" aria-label="Compteurs globaux"></section>
+
+  <section class="inbox" id="inbox" aria-label="Tickets à réceptionner"></section>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Lettres"></nav>
+
+  <main class="layout">
+    <section class="panel grid-panel">
+      <div class="grid-header">
+        <h2 id="grid-title">—</h2>
+        <div class="letter-stats" id="letter-stats"></div>
+        <div class="legend">
+          <span><i class="dot dot-empty"></i>Vide</span>
+          <span><i class="dot dot-reserve"></i>Réservé</span>
+          <span><i class="dot dot-full"></i>Occupé</span>
+        </div>
+      </div>
+      <p class="search-msg" id="search-msg" role="status"></p>
+      <div class="grid-scroll" id="grid-scroll">
+        <div class="grid" id="grid"></div>
+      </div>
+    </section>
+
+    <aside class="panel detail" id="detail" aria-live="polite">
+      <p class="detail-empty">Clique sur un emplacement pour voir le détail.</p>
+    </aside>
+  </main>
+
+  <!-- Formulaire de réception -->
+  <dialog class="modal" id="modal-reception">
+    <form method="dialog" class="modal-body" id="form-reception" novalidate>
+      <div class="modal-head">
+        <h2 id="reception-titre">Réception</h2>
+        <button type="button" class="btn-close" id="btn-fermer" aria-label="Fermer">×</button>
+      </div>
+
+      <div class="modal-grid">
+        <div>
+          <div class="ticket-recap" id="reception-recap"></div>
+
+          <div class="form">
+            <label class="field">
+              <span>Nom du client</span>
+              <input type="text" name="client" required>
+            </label>
+            <label class="field">
+              <span>Nom du fournisseur</span>
+              <input type="text" name="fournisseur" required>
+            </label>
+            <div class="field-row">
+              <label class="field">
+                <span>Date de réception</span>
+                <input type="date" name="dateReception" required>
+              </label>
+              <label class="field">
+                <span>N° du cliché</span>
+                <input type="text" name="numeroCliche" required>
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span>Signature (nom)</span>
+                <input type="text" name="signature" required>
+              </label>
+              <label class="field">
+                <span>Machine</span>
+                <select name="machine" required></select>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-preview" id="reception-preview"></div>
+      </div>
+
+      <p class="error" id="reception-erreur"></p>
+
+      <div class="modal-actions">
+        <button type="button" class="btn" id="btn-annuler-reception">Fermer</button>
+        <button type="submit" class="btn btn-primary btn-lg" id="btn-valider">
+          Valider la réception et imprimer
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

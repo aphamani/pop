@@ -1,0 +1,7 @@
+Mettre ici les 2 modèles PDF vierges à remplir à la réception :
+  - fiche-1.pdf
+  - fiche-2.pdf
+(noms modifiables dans js/pdf-config.js)
+
+Tant qu'ils sont absents, l'app génère une page A4 de remplacement.
+Les coordonnées d'écriture se règlent dans js/pdf-config.js.
